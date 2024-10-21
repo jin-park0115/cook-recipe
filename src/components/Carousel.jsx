@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const Carousel = ({ data }) => {
   const settings = {
@@ -21,10 +22,12 @@ const Carousel = ({ data }) => {
     <CarouselWrapper className="slider-container">
       <Slider {...settings}>
         {data.map((res, index) => (
-          <Slide key={index} bgImage={res.ATT_FILE_NO_MAIN}>
-            <h3>{index + 1 + "위"}</h3>
-            <p>{res.RCP_NM}</p>
-          </Slide>
+          <Link to={`/recipe/${res.RCP_SEQ}`}>
+            <Slide key={index} bgImage={res.ATT_FILE_NO_MAIN}>
+              <h3>{index + 1 + "위"}</h3>
+              <p>{res.RCP_NM}</p>
+            </Slide>
+          </Link>
         ))}
       </Slider>
     </CarouselWrapper>
@@ -46,7 +49,7 @@ const CarouselWrapper = styled.div`
 `;
 
 const Slide = styled.div`
-  background: url(${(props) => props.bgImage});
+  background: url(${(props) => props.bgImage}) no-repeat center center;
   color: #fff;
   border-radius: 10px;
   width: 360px !important;

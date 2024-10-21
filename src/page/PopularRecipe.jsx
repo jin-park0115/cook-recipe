@@ -4,28 +4,10 @@ import Carousel from "../components/Carousel";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { useRecipe } from "../store/RecipeContext";
 
 const PopularRecipe = () => {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-
-  const [data, setData] = useState([]);
-
-  const callApi = () => {
-    axios
-      .get(
-        `http://openapi.foodsafetykorea.go.kr/api/${API_KEY}/COOKRCP01/json/1/10`
-      )
-      .then((res) => {
-        const fetchedData = res.data.COOKRCP01.row;
-        setData(fetchedData);
-      })
-      .catch((err) => console.log(err, "에러닷!"));
-  };
-
-  useEffect(() => {
-    callApi();
-  }, []);
-
+  const { data } = useRecipe();
   return (
     <>
       <NavBar />
