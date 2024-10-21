@@ -1,0 +1,23 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+}
+a:visited,
+a:active {
+  color: #fdfbfb;
+}
+
+li,
+ul,
+ol {
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
