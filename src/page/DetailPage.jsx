@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { useRecipe } from "../store/RecipeContext";
 import { useParams } from "react-router-dom";
 
@@ -15,15 +14,35 @@ const DetailPage = () => {
         <Card>
           <h1>{recipe.RCP_NM}</h1>
           <img src={recipe.ATT_FILE_NO_MAIN} alt="" />
-          <p>{recipe.MANUAL01}</p>
-          <p>{recipe.MANUAL02}</p>
-          <p>{recipe.MANUAL03}</p>
-          <p>칼로리 : {recipe.INFO_ENG}kcal</p>
-          <p>탄수화물 : {recipe.INFO_CAR}g</p>
-          <p>단백질 : {recipe.INFO_PRO}g</p>
-          <p>지방 : {recipe.INFO_FAT}g</p>
-          <p>나트륨 : {recipe.INFO_NA}mg</p>
-          <p>꿀팁 : {recipe.RCP_NA_TIP}</p>
+          <Info>
+            <p>{recipe.MANUAL01}</p>
+            <p>{recipe.MANUAL02}</p>
+            <p>{recipe.MANUAL03}</p>
+            <InfoDetail>
+              <p>
+                <span>칼로리 : </span> {recipe.INFO_ENG}kcal
+              </p>
+              <p>
+                <span>탄수화물 : </span>
+                {recipe.INFO_CAR}g
+              </p>
+              <p>
+                <span>단백질 : </span>
+                {recipe.INFO_PRO}g
+              </p>
+              <p>
+                <span>지방 : </span> {recipe.INFO_FAT}g
+              </p>
+              <p>
+                <span>나트륨 : </span>
+                {recipe.INFO_NA}mg
+              </p>
+            </InfoDetail>
+            <p className="honey-tip">
+              <span>꿀팁 : </span>
+              {recipe.RCP_NA_TIP}
+            </p>
+          </Info>
         </Card>
       </Box>
     </Container>
@@ -47,10 +66,33 @@ const Container = styled.div`
 const Box = styled.div`
   width: 100%;
   height: 100%;
-  background-color: yellow;
   border-radius: 30px;
 `;
 
 const Card = styled.div`
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  .honey-tip {
+    width: 100%;
+    height: 30px;
+    overflow-y: scroll;
+  }
+`;
+
+const Info = styled.div`
+  width: 50%;
+  span {
+    font-weight: 600;
+  }
+`;
+
+const InfoDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;

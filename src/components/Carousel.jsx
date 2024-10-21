@@ -54,9 +54,6 @@ const Slide = styled.div`
   border-radius: 10px;
   width: 360px !important;
   height: 260px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
