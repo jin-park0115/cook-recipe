@@ -1,16 +1,26 @@
 import styled from "styled-components";
 import { useRecipe } from "../store/RecipeContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const DetailPage = () => {
   const { data } = useRecipe();
 
   const { id } = useParams();
   const recipe = data.find((item) => item.RCP_SEQ === id);
-  console.log(recipe);
+
+  const navigate = useNavigate();
   return (
     <Container>
       <Box>
+        <Back
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <IoMdArrowRoundBack />
+        </Back>
         <Card>
           <h1>{recipe.RCP_NM}</h1>
           <img src={recipe.ATT_FILE_NO_MAIN} alt="" />
@@ -67,6 +77,14 @@ const Box = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 30px;
+`;
+
+const Back = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 40px;
+  cursor: pointer;
 `;
 
 const Card = styled.div`

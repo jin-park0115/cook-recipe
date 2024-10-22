@@ -2,15 +2,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 
-const NavBar = () => {
+const NavBar = ({ li }) => {
   return (
     <Nav>
       <Ul>
         <Li to="/">
           <li>HOME</li>
         </Li>
-        <Li to="/howcook">
-          <li>HOWCOOK</li>
+        <Li to={`/${li}`}>
+          <li>{li}</li>
         </Li>
         <Li to="/idea">
           <li>IDEA</li>
@@ -45,6 +45,9 @@ const Li = styled(Link)`
   transition: ease-in-out 0.5s;
   &:hover {
     color: black;
+  }
+  li {
+    text-transform: uppercase;
   }
 `;
 

@@ -1,20 +1,23 @@
 import NavBar from "../components/NavBar";
 import styled from "styled-components";
 import Carousel from "../components/Carousel";
-import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
+
 import { useRecipe } from "../store/RecipeContext";
+import Loading from "../components/Loading";
 
 const PopularRecipe = () => {
-  const { data } = useRecipe();
+  const { data, loading } = useRecipe();
   return (
     <>
-      <NavBar />
-      <Container>
-        <h1>랭킹 탑 10</h1>
-        <Carousel data={data} />
-      </Container>
+      <NavBar li={"howcook"} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container>
+          <h1>랭킹 탑 10</h1>
+          <Carousel data={data} />
+        </Container>
+      )}
     </>
   );
 };

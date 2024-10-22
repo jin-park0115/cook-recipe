@@ -21,7 +21,7 @@ const Carousel = ({ data }) => {
   return (
     <CarouselWrapper className="slider-container">
       <Slider {...settings}>
-        {data.map((res, index) => (
+        {data.slice(0, 10).map((res, index) => (
           <Link to={`/recipe/${res.RCP_SEQ}`}>
             <Slide key={index} bgImage={res.ATT_FILE_NO_MAIN}>
               <h3>{index + 1 + "위"}</h3>

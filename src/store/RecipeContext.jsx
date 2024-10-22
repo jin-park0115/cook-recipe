@@ -18,7 +18,7 @@ export const RecipeProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://openapi.foodsafetykorea.go.kr/api/${API_KEY}/COOKRCP01/json/1/10`
+          `http://openapi.foodsafetykorea.go.kr/api/${API_KEY}/COOKRCP01/json/1/100`
         );
         const datas = response.data.COOKRCP01.row;
         setData(datas);
