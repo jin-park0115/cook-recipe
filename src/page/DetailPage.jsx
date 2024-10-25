@@ -14,11 +14,7 @@ const DetailPage = () => {
   return (
     <Container>
       <Box>
-        <Back
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
+        <Back onClick={() => navigate(-1)}>
           <IoMdArrowRoundBack />
         </Back>
         <Card>

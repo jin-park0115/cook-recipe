@@ -2,8 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import DetailPage from "./page/DetailPage";
 import HowCook from "./page/HowCook";
 import IdeaPage from "./page/IdeaPage";
+import LoginPage from "./page/loginPage";
 import MainPage from "./page/MainPage";
 import PopularRecipe from "./page/PopularRecipe";
+import SignUp from "./page/SignUp";
 import UserPage from "./page/UserPage";
 import { RecipeProvider } from "./store/RecipeContext";
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/idea" element={<IdeaPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/recipe/:id" element={<DetailPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </RecipeProvider>
   );
