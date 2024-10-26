@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import CreatePage from "./page/CreatePage";
 import DetailPage from "./page/DetailPage";
 import HowCook from "./page/HowCook";
 import IdeaPage from "./page/IdeaPage";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/recipe/:id" element={<DetailPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/create" element={<CreatePage />} />
       </Routes>
     </RecipeProvider>
   );

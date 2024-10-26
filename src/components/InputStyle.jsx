@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-const InputStyle = ({ type, id, value, placeholder, onChange, min }) => {
+const InputStyle = ({
+  type,
+  id,
+  value,
+  placeholder,
+  onChange,
+  min,
+  width,
+  height,
+}) => {
   return (
     <Input
       id={id}

@@ -18,7 +18,9 @@ const DetailPage = () => {
           <IoMdArrowRoundBack />
         </Back>
         <Card>
-          <h1>{recipe.RCP_NM}</h1>
+          <div className="title">
+            <h1>{recipe.RCP_NM}</h1>
+          </div>
           <img src={recipe.ATT_FILE_NO_MAIN} alt="" />
           <Info>
             <p>{recipe.MANUAL01}</p>
@@ -84,11 +86,15 @@ const Back = styled.div`
 `;
 
 const Card = styled.div`
-  padding: 20px;
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 20px;
+  .title {
+    height: 320px;
+  }
   .honey-tip {
     width: 100%;
     height: 30px;
@@ -97,7 +103,7 @@ const Card = styled.div`
 `;
 
 const Info = styled.div`
-  width: 50%;
+  width: 40%;
   span {
     font-weight: 600;
   }

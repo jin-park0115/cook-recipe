@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 
 const PopularRecipe = () => {
   const { data, loading } = useRecipe();
+  console.log(data);
   return (
     <>
       <NavBar li={"howcook"} />
