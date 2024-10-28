@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase";
 
 const RecipeContext = createContext();
 
@@ -11,8 +13,20 @@ export const RecipeProvider = ({ children }) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const [data, setData] = useState([]);
+  const [fireData, setFireData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
+
+  useEffect(() => {
+    const unsubribe = onSnapshot(collection(db, "recipes"), (snapshot) => {
+      const recipeData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFireData(recipeData);
+    });
+    return () => unsubribe();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +46,7 @@ export const RecipeProvider = ({ children }) => {
   }, []);
 
   return (
-    <RecipeContext.Provider value={{ data, loading, err }}>
+    <RecipeContext.Provider value={{ data, loading, err, fireData }}>
       {children}
     </RecipeContext.Provider>
   );

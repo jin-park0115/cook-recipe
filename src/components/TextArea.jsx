@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const TextArea = ({ id, height }) => {
-  return <Text_area id={id} height={height}></Text_area>;
+const TextArea = ({ id, height, onChange }) => {
+  return <Text_area id={id} height={height} onChange={onChange}></Text_area>;
 };
 
 export default TextArea;
