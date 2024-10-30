@@ -78,7 +78,7 @@ export default LoginPage;
 const Container = styled.div`
   width: 80vw;
   height: 100vh;
-  background-color: #77cdff;
+  border: 1px solid #222;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -8,13 +8,13 @@ const HowCook = () => {
 
   return (
     <>
-      <NavBar li={"popular"}></NavBar>
+      <NavBar li={"popular"} li2={"idea"} />
       {loading ? (
         <Loading />
       ) : (
         <Container>
           {data.map((res) => (
-            <Card key={res.SEQ}>
+            <Card key={res.RCP_SEQ}>
               <Title>{res.RCP_NM}</Title>
               <Link to={`/recipe/${res.RCP_SEQ}`}>
                 <Img src={res.ATT_FILE_NO_MK} alt={res.RCP_NM} />

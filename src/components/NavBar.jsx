@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { CiUser } from "react-icons/ci";
 
-const NavBar = ({ li }) => {
+const NavBar = ({ li, li2 }) => {
   return (
     <Nav>
       <Ul>
@@ -12,8 +12,8 @@ const NavBar = ({ li }) => {
         <Li to={`/${li}`}>
           <li>{li}</li>
         </Li>
-        <Li to="/idea">
-          <li>IDEA</li>
+        <Li to={`/${li2}`}>
+          <li>{li2}</li>
         </Li>
         <Li to="/user">
           <li>
@@ -29,8 +29,8 @@ export default NavBar;
 
 const Nav = styled.div`
   width: 100%;
-  background-color: #0d92f4;
   padding: 20px 0px;
+  border-bottom: 1px solid #222;
 `;
 
 const Ul = styled.ul`
@@ -43,9 +43,11 @@ const Ul = styled.ul`
 
 const Li = styled(Link)`
   transition: ease-in-out 0.5s;
+  color: #222;
   &:hover {
-    color: black;
+    color: #77cdff;
   }
+
   li {
     text-transform: uppercase;
   }

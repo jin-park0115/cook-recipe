@@ -25,7 +25,7 @@ const InputStyle = ({
 export default InputStyle;
 
 const Input = styled.input`
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
   outline: none;

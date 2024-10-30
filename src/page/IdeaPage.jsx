@@ -7,16 +7,20 @@ import { ImFilePicture } from "react-icons/im";
 const IdeaPage = () => {
   const { fireData } = useRecipe();
 
+  const sortedData = [...fireData].sort((a, b) => {
+    return b.createAt.seconds - a.createAt.seconds;
+  });
+
   return (
     <>
-      <NavBar li={"popular"} />
+      <NavBar li={"popular"} li2={"howcook"} />
       <Banner>
         <h1>자신의 맛을 보여주세요!</h1>
       </Banner>
       <Container>
         <CardWrap>
-          {fireData.map((recipe) => (
-            <Card>
+          {sortedData.map((recipe) => (
+            <Card key={recipe.id}>
               <ImgBox>
                 {recipe.imageUrl ? (
                   <img src={recipe.imageUrl} alt={recipe.title} />
@@ -25,9 +29,16 @@ const IdeaPage = () => {
                 )}
               </ImgBox>
               <TitleBox>
-                <h2>요리이름:{recipe.title}</h2>
-                <p className="ingredients">요리재료:{recipe.ingredients}</p>
-                <p className="recipe">레시피 :{recipe.recipe}</p>
+                <h2>{recipe.title}</h2>
+                <p>{recipe.user}님의 레시피</p>
+                <p className="ingredients">
+                  요리재료: <br />
+                  {recipe.ingredients}
+                </p>
+                <p className="recipe">
+                  레시피: <br />
+                  {recipe.recipe}
+                </p>
               </TitleBox>
             </Card>
           ))}
@@ -46,8 +57,9 @@ const Banner = styled.div`
 `;
 
 const Container = styled.div`
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
+  margin-top: 10px;
 `;
 
 const CardWrap = styled.div`
@@ -91,5 +103,6 @@ const TitleBox = styled.div`
   }
   .recipe {
     font-size: 0.8rem;
+    white-space: pre-line;
   }
 `;

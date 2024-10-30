@@ -9,7 +9,7 @@ const PopularRecipe = () => {
   const { data, loading } = useRecipe();
   return (
     <>
-      <NavBar li={"howcook"} />
+      <NavBar li={"howcook"} li2={"idea"} />
       {loading ? (
         <Loading />
       ) : (
@@ -34,7 +34,6 @@ const Container = styled.div`
   justify-content: center;
   gap: 20px;
   overflow: hidden;
-  background-color: #77cdff;
   h1 {
     color: #c62e2e;
   }

@@ -31,7 +31,7 @@ const CreatePage = () => {
       setImageUrl(downloadURL);
       return downloadURL;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return "";
     }
   };
@@ -47,10 +47,12 @@ const CreatePage = () => {
         recipe,
         imageUrl: uploadedImageUrl || "",
         createAt: new Date(),
+        user: localStorage.getItem("userID"),
       });
+      alert("등록 성공!");
       navigate("/idea");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

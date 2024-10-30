@@ -18,6 +18,7 @@ const SignUp = () => {
     try {
       const auth = getAuth(app);
       const user = await createUserWithEmailAndPassword(auth, email, password);
+      alert("회원가입 되었습니다.");
       navigate("/login");
     } catch (error) {
       alert(error);
@@ -84,7 +85,7 @@ export default SignUp;
 const Container = styled.div`
   width: 80vw;
   height: 100vh;
-  background-color: #77cdff;
+  border: 1px solid #222;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -22,12 +22,12 @@ const Carousel = ({ data }) => {
     <CarouselWrapper className="slider-container">
       <Slider {...settings}>
         {data.slice(0, 10).map((res, index) => (
-          <Link to={`/recipe/${res.RCP_SEQ}`}>
-            <Slide key={index} bgImage={res.ATT_FILE_NO_MAIN}>
+          <Slide key={index} bgImage={res.ATT_FILE_NO_MAIN}>
+            <Link to={`/recipe/${res.RCP_SEQ}`}>
               <h3>{index + 1 + "위"}</h3>
               <p>{res.RCP_NM}</p>
-            </Slide>
-          </Link>
+            </Link>
+          </Slide>
         ))}
       </Slider>
     </CarouselWrapper>
@@ -65,5 +65,10 @@ const Slide = styled.div`
     font-size: 1.2rem;
     color: #0d92f4;
     font-weight: bold;
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 `;
