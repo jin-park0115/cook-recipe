@@ -9,7 +9,7 @@ const IdeaPage = () => {
 
   const sortedData = [...fireData].sort((a, b) => {
     return b.createAt.seconds - a.createAt.seconds;
-  });
+  }); // 게시물 정렬
 
   return (
     <>

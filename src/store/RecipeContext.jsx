@@ -26,7 +26,7 @@ export const RecipeProvider = ({ children }) => {
       setFireData(recipeData);
     });
     return () => unsubribe();
-  }, []);
+  }, []); //firebase
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +43,7 @@ export const RecipeProvider = ({ children }) => {
       }
     };
     fetchData();
-  }, []);
+  }, []); //foodAPI
 
   return (
     <RecipeContext.Provider value={{ data, loading, err, fireData }}>
