@@ -14,21 +14,12 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const localStoreExpired = (key, value, expiredMinutes) => {
-    const time = new Date();
-    const item = {
-      value: value,
-      expiry: time.getTime() + expiredMinutes * 60 * 1000,
-    };
-    localStorage.setItem(key, JSON.stringify(item));
-  };
-
   const onLogin = async (e) => {
     e.preventDefault();
     try {
       const auth = getAuth(app);
       const user = await signInWithEmailAndPassword(auth, email, password);
-      localStoreExpired("userID", email, 30); // 30분
+      localStorage.setItem("userID", email);
       alert("로그인 되었습니다.");
       navigate("/");
     } catch (error) {
