@@ -4,8 +4,9 @@ import CreateButton from "../components/CreateButton";
 import { useRecipe } from "../store/RecipeContext";
 import { ImFilePicture } from "react-icons/im";
 import banner from "../assets/배너.jpeg";
+import Loading from "../components/Loading";
 const IdeaPage = () => {
-  const { fireData } = useRecipe();
+  const { fireData, loading } = useRecipe();
 
   const sortedData = [...fireData].sort((a, b) => {
     return b.createAt.seconds - a.createAt.seconds;
@@ -17,34 +18,38 @@ const IdeaPage = () => {
       <Banner>
         <img src={banner} alt="" />
       </Banner>
-      <Container>
-        <CardWrap>
-          {sortedData.map((recipe) => (
-            <Card key={recipe.id}>
-              <ImgBox>
-                {recipe.imageUrl ? (
-                  <img src={recipe.imageUrl} alt={recipe.title} />
-                ) : (
-                  <NoImg />
-                )}
-              </ImgBox>
-              <TitleBox>
-                <h2>{recipe.title}</h2>
-                <p>{recipe.user}님의 레시피</p>
-                <p className="ingredients">
-                  요리재료: <br />
-                  {recipe.ingredients}
-                </p>
-                <p className="recipe">
-                  레시피: <br />
-                  {recipe.recipe}
-                </p>
-              </TitleBox>
-            </Card>
-          ))}
-        </CardWrap>
-        <CreateButton />
-      </Container>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container>
+          <CardWrap>
+            {sortedData.map((recipe) => (
+              <Card key={recipe.id}>
+                <ImgBox>
+                  {recipe.imageUrl ? (
+                    <img src={recipe.imageUrl} alt={recipe.title} />
+                  ) : (
+                    <NoImg />
+                  )}
+                </ImgBox>
+                <TitleBox>
+                  <h2>{recipe.title}</h2>
+                  <p>{recipe.user}님의 레시피</p>
+                  <p className="ingredients">
+                    요리재료: <br />
+                    {recipe.ingredients}
+                  </p>
+                  <p className="recipe">
+                    레시피: <br />
+                    {recipe.recipe}
+                  </p>
+                </TitleBox>
+              </Card>
+            ))}
+          </CardWrap>
+          <CreateButton />
+        </Container>
+      )}
     </>
   );
 };
@@ -97,6 +102,7 @@ const NoImg = styled(ImFilePicture)`
 
 const TitleBox = styled.div`
   padding: 10px;
+  overflow: scroll;
   .ingredients {
     font-size: 0.9rem;
     font-weight: 300;

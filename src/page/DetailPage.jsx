@@ -11,6 +11,19 @@ const DetailPage = () => {
   const recipe = data.find((item) => item.RCP_SEQ === id);
 
   const navigate = useNavigate();
+
+  if (!recipe) {
+    return (
+      <Container>
+        <Box>
+          <div className="beforeDiv">레시피를 불러오는 중입니다...</div>
+          <Back onClick={() => navigate(-1)}>
+            <IoMdArrowRoundBack />
+          </Back>
+        </Box>
+      </Container>
+    );
+  }
   return (
     <Container>
       <Box>
@@ -75,6 +88,11 @@ const Box = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 30px;
+  .beforeDiv {
+    position: absolute;
+    top: 20%;
+    left: 30px;
+  }
 `;
 
 const Back = styled.div`

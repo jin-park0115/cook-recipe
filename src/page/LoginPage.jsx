@@ -8,6 +8,8 @@ import InputStyle from "../components/InputStyle";
 import ButtonStyle from "../components/ButtonStyle";
 
 const LoginPage = () => {
+  const AUTO_LOGOUT = 6 * 60 * 60 * 1000;
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -21,6 +23,13 @@ const LoginPage = () => {
       const user = await signInWithEmailAndPassword(auth, email, password);
       localStorage.setItem("userID", email);
       alert("로그인 되었습니다.");
+
+      setTimeout(() => {
+        alert("로그아웃 되었습니다.");
+        localStorage.removeItem("userID");
+        navigate("/");
+      }, AUTO_LOGOUT);
+
       navigate("/");
     } catch (error) {
       console.error(error);
