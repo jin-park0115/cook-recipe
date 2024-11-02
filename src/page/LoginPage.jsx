@@ -65,6 +65,7 @@ const LoginPage = () => {
         />
         <div className="buttonWrap">
           <ButtonStyle
+            type="button"
             onClick={() => {
               navigate("/signup");
             }}

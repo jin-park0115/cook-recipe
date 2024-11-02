@@ -12,6 +12,8 @@ const IdeaPage = () => {
     return b.createAt.seconds - a.createAt.seconds;
   }); // 게시물 정렬
 
+  const active = localStorage.getItem("userID");
+
   return (
     <>
       <NavBar li={"popular"} li2={"howcook"} />
@@ -47,7 +49,7 @@ const IdeaPage = () => {
               </Card>
             ))}
           </CardWrap>
-          <CreateButton />
+          {active ? <CreateButton /> : ""}
         </Container>
       )}
     </>
