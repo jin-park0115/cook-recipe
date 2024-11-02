@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import CreateButton from "../components/CreateButton";
 import { useRecipe } from "../store/RecipeContext";
 import { ImFilePicture } from "react-icons/im";
-
+import banner from "../assets/배너.jpeg";
 const IdeaPage = () => {
   const { fireData } = useRecipe();
 
@@ -15,7 +15,7 @@ const IdeaPage = () => {
     <>
       <NavBar li={"popular"} li2={"howcook"} />
       <Banner>
-        <h1>자신의 맛을 보여주세요!</h1>
+        <img src={banner} alt="" />
       </Banner>
       <Container>
         <CardWrap>
@@ -53,13 +53,13 @@ export default IdeaPage;
 
 const Banner = styled.div`
   width: 100vw;
-  background-color: #4d473f;
+  margin-top: 20px;
 `;
 
 const Container = styled.div`
   width: 80%;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 const CardWrap = styled.div`
